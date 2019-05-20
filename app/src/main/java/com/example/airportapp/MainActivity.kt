@@ -168,14 +168,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             currentLocation!!.latitude.toString(),
             "100"
         )
-            .enqueue(object : Callback<NearByAirportModel> {
-                override fun onResponse(call: Call<NearByAirportModel>, model: Response<NearByAirportModel>) {
+            .enqueue(object : Callback<List<NearByAirportModel>> {
+                override fun onResponse(call: Call<List<NearByAirportModel>>, model: Response<List<NearByAirportModel>>) {
                     if (model.isSuccessful && model.body() != null) {
 
                     }
                 }
 
-                override fun onFailure(call: Call<NearByAirportModel>, t: Throwable) {
+                override fun onFailure(call: Call<List<NearByAirportModel>>, t: Throwable) {
                     Toast.makeText(this@MainActivity, "Sorry something went wrongm please try again", Toast.LENGTH_LONG).show()
 
                     Log.e("FAILURE", t.message)

@@ -102,11 +102,10 @@ class AirportSchedulesActivity : AppCompatActivity() {
         val apiService = AirportApiClient.getService()
 
         apiService.getAirportSchedules("JNB", "departure")
-            .enqueue(object : Callback<AirportFlightScheduleModel> {
-                override fun onResponse(call: Call<AirportFlightScheduleModel>, model: Response<AirportFlightScheduleModel>) {
+            .enqueue(object : Callback<List<AirportFlightScheduleModel>> {
+                override fun onResponse(call: Call<List<AirportFlightScheduleModel>>, model: Response<List<AirportFlightScheduleModel>>) {
                     progressBar!!.dismiss()
                     if (model.isSuccessful && model.body() != null) {
-                        airportFlightFlightSchedule!!.add(model.body()!!)
                         editor = sharedPreferences!!.edit()
                         editor!!.putString(SHARED_PREFERENCES_KEY, gson.toJson(model.body()))
                         editor!!.apply()
@@ -114,7 +113,7 @@ class AirportSchedulesActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<AirportFlightScheduleModel>, t: Throwable) {
+                override fun onFailure(call: Call<List<AirportFlightScheduleModel>>, t: Throwable) {
                     progressBar!!.dismiss()
                     Toast.makeText(this@AirportSchedulesActivity, "Sorry, something went wrong, please try again", Toast.LENGTH_LONG).show()
 

@@ -74,12 +74,6 @@ class AirportSchedulesActivity : AppCompatActivity() {
         progressBar!!.isIndeterminate = false
         progressBar!!.setCancelable(false)
 
-//        progressBar!!.show()
-
-//        getFlightsSchedule()
-
-//        val adapter = FlightSchedulesAdapter(ArrayList(getTimeTable()))
-//        recyclerView!!.adapter = adapter
         getTimeTable()
     }
 
@@ -122,7 +116,7 @@ class AirportSchedulesActivity : AppCompatActivity() {
 
                 override fun onFailure(call: Call<AirportFlightScheduleModel>, t: Throwable) {
                     progressBar!!.dismiss()
-                    Toast.makeText(this@AirportSchedulesActivity, "" + t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@AirportSchedulesActivity, "Sorry, something went wrong, please try again", Toast.LENGTH_LONG).show()
 
                     Log.e("FAILURE", t.message)
                 }

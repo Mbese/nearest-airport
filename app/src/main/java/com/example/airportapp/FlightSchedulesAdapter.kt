@@ -33,7 +33,7 @@ class FlightSchedulesAdapter (private var flightsList: ArrayList<AirportFlightSc
 
         airlineTextView.text = flightsList[position].airline.name
         statusTextView.text = flightsList[position].status
-//        departureTimeTextView.text = flightsList[position].departure.scheduledTime!!.substring(14,19)
+        departureTimeTextView.text = flightsList[position].departure.scheduledTime!!.substring(14,19)
         flightNumberTextView.text = flightsList[position].flight.number
         destinationTextView.text = flightsList[position].arrival.icaoCode
 

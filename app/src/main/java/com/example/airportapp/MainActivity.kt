@@ -176,7 +176,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
 
                 override fun onFailure(call: Call<NearByAirportModel>, t: Throwable) {
-                    Toast.makeText(this@MainActivity, "" + t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity, "Sorry something went wrongm please try again", Toast.LENGTH_LONG).show()
 
                     Log.e("FAILURE", t.message)
                 }
